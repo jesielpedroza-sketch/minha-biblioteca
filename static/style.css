@@ -1,0 +1,406 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #2980b9;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+/* Estilo da Tabela */
+#tabela-livros {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#tabela-livros th, #tabela-livros td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#tabela-livros th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+/* Estilo do Formulário */
+#form-novo-livro input[type="text"], 
+#form-novo-livro input[type="number"] {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+#form-novo-livro button {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#form-novo-livro button:hover {
+    background-color: #27ae60;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* ... (Mantenha seu CSS existente) ... */
+
+/* Estilo do Campo de Pesquisa */
+#search-container {
+    margin-bottom: 20px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Estilo da Tabela */
+.disponivel-col {
+    width: 120px; /* Ajusta a largura para o toggle */
+}
+
+/* Estilo para Mensagens de Feedback */
+#feedback-message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    display: block;
+}
+
+#feedback-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+#feedback-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+#feedback-message.hidden {
+    display: none;
+}
+
+/* Estilo do Toggle Switch de Disponibilidade (base CSS) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2ecc71;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2ecc71;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+/* static/style.css (Revised: Adicionar ao seu arquivo) */
+
+/* ... (Mantenha seu CSS existente) ... */
+
+/* Estilo da Tabela e Ordenação (NOVOS) */
+#tabela-livros th {
+    cursor: pointer; /* Indica que é clicável para ordenar */
+    position: relative;
+}
+
+/* Ícones de Ordenação */
+.sort-icon {
+    margin-left: 5px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+#tabela-livros th.sorted-asc .sort-icon {
+    border-bottom: 4px solid #333; /* Triângulo para cima */
+}
+
+#tabela-livros th.sorted-desc .sort-icon {
+    border-top: 4px solid #333; /* Triângulo para baixo */
+}
+
+/* Estilo da Paginação (NOVOS) */
+#pagination-controls {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+#page-info {
+    margin: 0 20px;
+    font-weight: bold;
+}
+
+#pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* --------------------
+    Estilo do Modal (NOVOS)
+   -------------------- */
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#form-edicao-livro label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#form-edicao-livro input[type="text"],
+#form-edicao-livro input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#edit-disponivel {
+    margin-left: 0;
+    width: auto;
+}
+
+#edit-button {
+    background-color: #3498db !important;
+    margin-top: 15px;
+    width: 100%;
+}
+/* static/style.css (ADICIONAR AO SEU ARQUIVO EXISTENTE) */
+
+/* Estilos para Status de Empréstimo na Tabela */
+.available {
+    font-weight: bold;
+    color: #27ae60; /* Verde */
+}
+
+.borrowed {
+    font-weight: bold;
+    color: #c0392b; /* Vermelho */
+}
+
+/* Estilos para Botões de Ação na Tabela */
+.action-btn {
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    color: white;
+}
+
+.borrow-btn {
+    background-color: #3498db; /* Azul */
+}
+
+.return-btn {
+    background-color: #27ae60; /* Verde */
+}
+
+.history-btn {
+    background-color: #9b59b6; /* Roxo */
+}
+
+.remove-btn {
+    background-color: #e74c3c; /* Vermelho */
+}
+
+/* Estilos Específicos para Modais de Empréstimo e Histórico */
+/* Use os mesmos estilos .modal e .modal-content criados na etapa anterior */
+
+#tabela-historico {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+#tabela-historico th, #tabela-historico td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+#tabela-historico th {
+    background-color: #f2f2f2;
+}
+/* static/style.css (ADICIONAR NO INÍCIO) */
+/* --- Header e Logo --- */
+header {
+    background-color: #2c3e50; /* Cor mais escura para um visual corporativo */
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 50px; /* Tamanho da logo */
+    margin-right: 15px;
+    border-radius: 5px; /* Borda leve na logo */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* --- Rodapé --- */
+footer {
+    background-color: #34495e; /* Um pouco mais claro que o header */
+    color: #ecf0f1;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.social-links a {
+    color: #bdc3c7;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
